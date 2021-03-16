@@ -27,7 +27,7 @@
 // }
 
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup,Validators} from '@angular/forms';
+import { EmailValidator, FormControl,FormGroup,Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
@@ -36,22 +36,19 @@ import { ErrorStateMatcher } from '@angular/material/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  loginForm: FormGroup = new FormGroup({
+    email : new FormControl('',[Validators.required]),
+    password :new FormControl('',[Validators.required]),
+  });
   constructor() { }
 
   ngOnInit(): void {
-    console.log('bonjour')
   }
+ login(){
+  var users = JSON.parse(localStorage.getItem('Registered') || '[]' ) 
+  // let connect = users.find((x) =>x.email == this.loginForm.email.value && x.password==password.value)  )
   
-    emailFormControl =new FormControl('', [
-      Validators.required,
-      Validators.email,
-    ])
-    passwordFormControl = new FormControl('', [
-      Validators.required,
-      Validators.minLength(8)
-    ])
-    matcher = new ErrorStateMatcher();
+ }
 
 }
 

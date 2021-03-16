@@ -7,6 +7,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginV2Component } from './login-v2/login-v2.component';
+import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { Page404Component } from './page404/page404.component';
+import { UpdateComponent } from './update/update.component';
+import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
 
 
 @NgModule({
@@ -14,6 +21,13 @@ import { LoginV2Component } from './login-v2/login-v2.component';
     AppComponent,
     LoginComponent,
     LoginV2Component,
+    RegisterComponent,
+    FooterComponent,
+    NavbarComponent,
+    Page404Component,
+    UpdateComponent,
+    ListComponent,
+    AddComponent,
     
   ],
   imports: [
