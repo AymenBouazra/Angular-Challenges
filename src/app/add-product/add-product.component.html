@@ -1,0 +1,30 @@
+<div class="row my-3"> 
+    <div class="offset-3 col-6 my-3" >
+        <h1>ADD PRODUCT</h1>
+        <form  [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+            <div class="form-group">
+                <label for="Name" class="form-label">Name </label>
+                <input type="text" class="form-control" placeholder="Name" formControlName="name" >
+                <div class="invalid-feedback d-block" *ngIf="submitted && addProductForm.controls.name.hasError('required')">
+                    Name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="form-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Description" formControlName="description"></textarea>
+                <div class="invalid-feedback d-block"  *ngIf="submitted && addProductForm.controls.description.hasError('required')">
+                    Description is required.
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="Name" class="form-label">Quantity</label>
+                <input type="text" class="form-control" placeholder="Quantity" formControlName="quantity">
+                <div class="invalid-feedback d-blcok" *ngIf="submitted && addProductForm.controls.quantity.hasError('required')">
+                    Quantity is required.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Add Product</button>
+            <button type="button" routerLink="/list-product" class="btn btn-primary btn-block"><i class="fas fa-arrow-left"></i> Cancel</button>
+        </form>
+    </div>
+</div>

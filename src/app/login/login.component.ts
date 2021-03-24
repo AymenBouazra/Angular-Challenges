@@ -29,6 +29,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormControl,FormGroup,Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -36,18 +37,28 @@ import { ErrorStateMatcher } from '@angular/material/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  submitted= false;
   loginForm: FormGroup = new FormGroup({
-    email : new FormControl('',[Validators.required]),
+    email : new FormControl('',[Validators.required,Validators.email]),
     password :new FormControl('',[Validators.required]),
   });
-  constructor() { }
+  constructor(private  router:Router) { }
 
   ngOnInit(): void {
   }
  login(){
+  this.submitted= true;
+  if(this.loginForm.invalid){ 
+    return;
+  }
   var users = JSON.parse(localStorage.getItem('Registered') || '[]' ) 
-  // let connect = users.find((x) =>x.email == this.loginForm.email.value && x.password==password.value)  )
-  
+  let connect = users.find((x:any) =>x.email == this.loginForm.value.email && x.password==this.loginForm.value.password) 
+  if(connect==undefined){
+    alert('verify your email and password')
+  } else {
+    this.router.navigateByUrl('/list')
+    this.router.navigate(['/list'])
+  }
  }
 
 }

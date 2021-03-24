@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -7,15 +7,18 @@
       <th scope="col">Modification</th>
     </tr>
   </thead>
-  <tr *ngFor= "let todo of listTodo;let i=index">
+  <tbody class="">
+    <tr *ngFor= "let todo of listTodo;let i=index">
     <td>{{i+1}}</td>
     <td>{{todo.name}}</td>
     <td>{{todo.description}}</td>
     <td>
       <button type="button"  class="btn btn-warning " routerLink="/update/{{i}}">
-      Update
+        <i class="far fa-edit"></i> Update
       </button>
-      <button type="button" class="btn btn-danger" (click)="delete(i)" style="color:black!important">Delete</button></td>
+      <button type="button" class="btn btn-danger" (click)="delete(i)" style="color:black!important"><i class="fa fa-trash"></i> Delete</button></td>
   
   </tr>
+  </tbody>
+  
 </table>

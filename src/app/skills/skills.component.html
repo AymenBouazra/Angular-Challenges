@@ -1,0 +1,62 @@
+<div class="row my-3">
+    <!-- -->
+    <div class="offset-3 col-6">
+        <form [formGroup]="userDetailForm" (ngSubmit)="skills()">
+            <div class="form-group">
+                <label for="firsName">First Name</label>
+                <input class="form-control" type="text" placeholder="First Name" aria-label="default input example"
+                    formControlName="firstName">
+                <div class="invalid-feedback d-block"
+                    *ngIf="submitted && userDetailForm.controls.firstName.hasError('required')">
+                    First Name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example"
+                    formControlName="lastName">
+                <div class="invalid-feedback d-block"
+                    *ngIf="submitted && userDetailForm.controls.lastName.hasError('required')">
+                    Last Name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Skill" style="margin-right: 50px;">Skill/s</label>
+                <button class="btn btn-success" (click)="addRow()" type="button"><i class="fas fa-plus"></i> Add
+                    Skill</button>
+                <button class="btn btn-danger" (click)="removeLastRow()" type="button"><i class="fa fa-trash"></i>
+                    Remove Last</button>
+                <button class="btn btn-danger" (click)="removeAllRow()" type="button"><i class="fa fa-trash"></i> Remove
+                    All </button>
+                <div formArrayName="skills">
+                    <div *ngFor="let group of getSkills.controls; let i=index">
+                        <div [formGroupName]="i" class="row my-3">
+                            <div class=" col-4 offset-1">
+                                <input class="form-control" type="text" placeholder="Skill" formControlName="skill"
+                                    [ngClass]="{'is-invalid' : submitted && getSkills.controls[i].get('skill')?.errors , 'is-valid' : submitted && !getSkills.controls[i].get('skill')?.errors}">
+                                <div class="invalid-feedback d-block"
+                                    *ngIf="submitted && getSkills.controls[i].get('skill')?.errors">
+                                    Skill is required.
+                                </div>
+                            </div>
+                            <div class="col-3 offset-1">
+                                <input class="form-control" type="text" placeholder="Rating/10"
+                                    formControlName="note"
+                                    [ngClass]="{'is-invalid' : submitted && getSkills.controls[i].get('note')?.errors , 'is-valid' : submitted && !getSkills.controls[i].get('note')?.errors}">
+                                <div class="invalid-feedback d-block"
+                                    *ngIf="submitted && getSkills.controls[i].get('note')?.errors">
+                                    Rating is required.
+                                </div>
+                            </div>
+                            <div class="col-2 offset-1">
+                                <button class="btn btn-danger" (click)="removeRow(i)" type="button"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Save User</button>
+            {{userDetailForm.value | json}}
+        </form>
+    </div>
+</div>

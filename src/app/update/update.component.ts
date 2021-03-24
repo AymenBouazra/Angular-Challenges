@@ -33,6 +33,7 @@ export class UpdateComponent implements OnInit {
     this.updateToDoForm?.patchValue(toDoData)
   }
   saveUpdate() {
+    this.submitted=true;
     this.listToDo = JSON.parse(localStorage.getItem('Added') || '[]')
     this.listToDo.splice(this.toDoIndex,1,this.updateToDoForm?.value);
     localStorage.setItem('Added',JSON.stringify(this.listToDo))
