@@ -1,1 +1,25 @@
-<p>add-user works!</p>
+<div class="row my-3"> 
+    <div class="col-6 my-3" >
+        <h1>ADD</h1>
+        <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+            <div class="form-group">
+                <label for="Name" class="form-label">First Name </label>
+                <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+                <div class="invalid-feedback d-block" *ngIf="submitted && addUserForm.controls.firstName.hasError('required')">
+                    First name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="LastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+                <div class="invalid-feedback d-block" *ngIf="submitted && addUserForm.controls.lastName.hasError('required')">
+                    Last name is required.
+                  </div>
+            </div>
+            <button *ngIf="!showUpdateButton" type="submit" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Add</button>
+            <button *ngIf="showUpdateButton" type="button" (click)="saveUpdate()" class="btn btn-primary btn-block"><i class="far fa-edit"></i> Save Update</button>
+            <button *ngIf="showUpdateButton" type="button" (click)="cancel()" class="btn btn-secondary btn-block"><i class="fas fa-arrow-left"></i> Cancel</button>
+        </form>
+    </div>
+    <app-user-to-do class="col-6 my-3" [listUser]="userData" (updateUserEvent)="showUserData($event)" (deleteUserEvent)="deleteUser($event)"></app-user-to-do>
+</div>

@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AddUserComponent } from './add-user/add-user.component';
 import { AddComponent } from './add/add.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { ListComponent } from './list/list.component';
@@ -10,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { SkillsComponent } from './skills/skills.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { UpdateComponent } from './update/update.component';
+import { UserToDoComponent } from './user-to-do/user-to-do.component';
 
 const routes: Routes = [
   {
@@ -51,6 +53,10 @@ const routes: Routes = [
   {
     path : 'update-product/:i',
     component:UpdateProductComponent
+  },
+  {
+    path : 'add-user',
+    component:AddUserComponent
   },
   {
     path :'**',
