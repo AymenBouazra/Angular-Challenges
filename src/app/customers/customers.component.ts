@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductserviceService } from '../service/productservice.service';
+import { StoreService } from './services/store.service';
 
 @Component({
   selector: 'app-customers',
@@ -10,14 +10,19 @@ export class CustomersComponent implements OnInit {
 
   listProductTodo: any;
   currentDate= new Date;
-  constructor(private productService:ProductserviceService ) { } 
+  constructor(private productService:StoreService ) { } 
 
   ngOnInit(): void {
-    this.listProductTodo= this.productService.getAllProducts()
+      this.productService.getAllProducts().subscribe((response)=>{
+      this.listProductTodo=response
+    },(error)=>{
+      console.log(error);
+      
+    })
   }
-  delete(i:number){
-    this.productService.deleteProductByIndex(i)
-    this.listProductTodo= this.productService.getAllProducts()
+  delete(id:number){
+    this.productService.deleteProductById(id).subscribe((response:any)=>{this.ngOnInit()},(error)=>{})
+    
   }
   
 

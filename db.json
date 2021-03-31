@@ -1,0 +1,21 @@
+{
+  "products": [
+    {
+      "name": "qwer",
+      "description": "jhflfl",
+      "quantity": "6",
+      "price": "663687",
+      "createdAt": "2021-03-31T11:28:42.401Z",
+      "id": 1
+    },
+    {
+      "name": "PC",
+      "description": "Lenovo",
+      "quantity": "5",
+      "price": "2600",
+      "createdAt": "2021-03-31T11:31:19.188Z",
+      "id": 2
+    }
+  ],
+  "users": []
+}

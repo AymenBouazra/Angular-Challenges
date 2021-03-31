@@ -1,6 +1,6 @@
 <div class="offset-1 my-3 row" >
     <div class="col-12"> 
-    <button class="btn btn-success col-2 float-right"  routerLink="/add-product"><i class="fas fa-plus"></i> Add Product</button>
+    <button class="btn btn-success col-2 float-right"  routerLink="/customers/adding-product"><i class="fas fa-plus"></i> Add Product</button>
     
     </div>
   </div>
@@ -16,21 +16,19 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="" *ngFor= "let todo of listProductTodo;let i=index ">
-          <td>{{i+1 | number : '3.0'}}</td>
-          <td>{{todo.name | uppercase}}</td>
-          <td>{{todo.description | lowercase | slice:0:5 }}</td>
-          <td>{{todo.quantity }}</td>
-          <td>{{todo.quantity | currency : 'USD':'symbol-narrow'}}</td>
-          <td></td>
+      <tbody *ngIf="listProductTodo">
+        <tr class="" *ngFor= "let todo of listProductTodo">
+          <td>{{todo.id}}</td>
+          <td>{{todo.name}}</td>
+          <td>{{todo.description}}</td>
+          <td>{{todo.quantity}}</td>
+          <td>{{todo.price}}</td>
+          <td>{{todo.createdAt | date : 'long'}}</td>
           <td>
-            <button type="button"  class="btn btn-warning " >
+            <button type="button"  class="btn btn-warning " [routerLink]="['/customers/updating-product',todo.id]">
               <i class="far fa-edit"></i> Update
             </button>
-            <button type="button" class="btn btn-danger" style="color:black!important" (click)="delete(i)"><i class="fa fa-trash"></i> Delete</button></td>
+            <button type="button" class="btn btn-danger" style="color:black!important" (click)="delete(todo.id)"><i class="fa fa-trash"></i> Delete</button></td>
         </tr>
       </tbody>
-      
     </table>
-    <p>{{currentDate | date:'full' }}</p>

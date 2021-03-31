@@ -23,6 +23,7 @@ import { FlousPipe } from './flous.pipe';
 import { UserToDoComponent } from './user-to-do/user-to-do.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
+    HttpClientModule,
     
   ],
   providers: [],
