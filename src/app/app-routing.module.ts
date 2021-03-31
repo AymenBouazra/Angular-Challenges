@@ -58,6 +58,9 @@ const routes: Routes = [
     path : 'add-user',
     component:AddUserComponent
   },
+  { 
+    path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) 
+  },
   {
     path :'**',
     component:Page404Component
